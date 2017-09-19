@@ -166,3 +166,60 @@ print var1
 var0 and= var1
 print var0
 ```
+
+### Analyze test1.script
+
+When you continue to analyze this binary, it is getting easier to know the
+meaning of each part of the binary since you can find several useful patterns in
+the binary.
+
+Let's start with the first line of test1.script.
+
+* The first line:
+`bananAS banANAS baNanas BanAnas BanaNAS`
+
+I think `bananAS` is a kind of type. From now, we just ignore it. The binary
+checks whether the next word is an variable indicator or not, and if
+so(our case), checks the next word is an assignment operator. And the fourth
+word is not a `bananAS` prefix, it stores the remaining parts to the variable.
+
+Results til the second line:
+```
+var0 = 'enc[55].enc[56]'
+var1 = 'enc[55].enc[57]'
+```
+
+* The third line:
+`bananAS banaNAS bananAS banANAS baNanaS bananAS banANAs`
+
+The second word `banaNAS` indicates this line is for the branch statement. The
+control flow jumps one line if a condition is satisfied. The fourth word is the
+relative operator, and `baNanaS` means if the length of two operands are
+different, then the control flow jumps.
+
+So far, we get:
+```
+var0 = 'enc[55].enc[56]'
+var1 = 'enc[55].enc[57]'
+if len(var0) != len(var1): jump one line
+```
+
+Since two variables have same length, the fourth line will be executed.
+
+* The fourth line:
+`bananAS bananaS bananAS banANAs`
+
+The second word `bananaS` indicates this line is for getting input from user.
+And the fourth word is the destination operand.
+
+In summary, `test1.script` looks like:
+```
+var0 = 'enc[55].enc[56]'
+var1 = 'enc[55].enc[57]'
+if len(var0) != len(var1): jump one line
+var1 = get_input()
+if len(var0) != len(var1): jump one line
+print var1
+```
+From this result, we finally know why this script only prints our input when the
+length of our input is 2.
