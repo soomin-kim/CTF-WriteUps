@@ -1,7 +1,5 @@
 # bananaScript - Reversing 450
 
-==============================
-
 ## Problem Description
 
 Not too sure how to Interpret this, the lab member who wrote this "forgot" to
