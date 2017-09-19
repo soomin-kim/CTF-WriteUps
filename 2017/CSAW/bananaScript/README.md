@@ -70,7 +70,7 @@ some parsed inputs.
   for ( i = 0LL; sub_40FAD8(&v554) > i; ++i )
 ```
 
-The first line:
+* The first line:
 `banANAS baNanas BANANAs BANANAS BANanAs BANANAS BANanAs BANANAS BAnANaS`
 
 There are 4 allocations for words, `bananaAS`, `bananaNAS`, `bananas`, and
@@ -124,7 +124,7 @@ var0 = BANANAs BANANAS BANanAs BANANAS BANanAs BANANAS BAnANaS
 var1 = BAnaNas BAnaNaS BaNAnas BAnaNaS BaNAnas BAnaNaS BaNanAS
 ```
 
-The third line:
+* The third line:
 `bananas banANAS`
 
 When the first word of line is `bananas`, it checks whether the second word is
@@ -143,7 +143,7 @@ print var1
 print var0
 ```
 
-The fifth line:
+* The fifth line:
 `banANAS baNaNas banANAs`
 
 Now we only have the fifth line of the `test2.script`. It consists of only 3
