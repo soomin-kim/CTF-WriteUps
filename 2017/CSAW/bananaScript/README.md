@@ -54,7 +54,7 @@ whole binary statically. So I used `gdb` to trace the interpreter in test-driven
 manner.
 
 // Actually I'm not good at English, I'll only use present tense after this
-// point
+point
 
 ### Analyze test2.script
 
